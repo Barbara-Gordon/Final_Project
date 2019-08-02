@@ -18,7 +18,7 @@ client = pymongo.MongoClient(conn)
 @app.route('/')
 def root():
     return render_template('index.html')
-    
+
 @app.route('/data')
 def rawData():
     conn = 'mongodb://timanderin.info:27017'
@@ -36,6 +36,11 @@ def rawData():
         i=i+1
 
     return jsonify(finalData)
+
+@app.route('/handle_data', methods=['POST'])
+def handle_data():
+    projectpath = request.form['projectFilepath']
+    return(projectpath)
 
 if __name__ == "__main__":
     app.run(debug=True)
