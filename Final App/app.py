@@ -38,5 +38,21 @@ def rawData():
 
     return jsonify(finalData)
 
+
+@app.route('/jdbar')
+def jdBar():
+    df = pd.read_csv("jdbar.csv")
+    index = 0
+    jdBarData = []
+    for x in df['decade']:
+        data = {}
+        data['decade'] = x
+        data['liberal'] = df['liberal'][index] * 100
+        data['conservative'] = df['conservative'][index] * 100
+        jdBarData.append(data)
+        index +=1
+
+    return jsonify(jdBarData)
+
 if __name__ == "__main__":
     app.run(debug=True)
