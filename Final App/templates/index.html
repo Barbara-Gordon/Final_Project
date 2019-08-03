@@ -122,14 +122,12 @@
     <hr>
     <div class="row centered">
       <div class="col-lg-6 col-lg-offset-3">
-        <form class="form-inline" role="form">
-          <div class="form-group">
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Try it! Enter your text here">
-          </div>
-          <button type="submit" class="btn btn-warning btn-lg">Submit</button>
-        </form>
+        <form method="POST" action="/response">
+          Sample text: <textarea type="text" name="sample" required rows=15 cols = 100></textarea><br>
+          <input type="submit" value="Submit">
+          </form>
+        </div>
       </div>
-      <div class="col-lg-3"></div>
     </div>
     <!-- /row -->
     <hr>
@@ -139,7 +137,10 @@
   <div class="container">
     <div class="row mt centered">
       <div class="col-lg-6 col-lg-offset-3">
-        <h1>This should be the readouts for the text submission?</h1>
+        {% if sample %}
+         <h1>Result: </h1>
+         {{sample}}
+         {% endif %}
         <h3>!!</h3>
       </div>
     </div>
