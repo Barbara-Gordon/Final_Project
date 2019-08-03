@@ -37,10 +37,10 @@ def rawData():
 
     return jsonify(finalData)
 
-@app.route('/handle_data', methods=['POST'])
-def handle_data():
-    projectpath = request.form['projectFilepath']
-    return(projectpath)
+@app.route('/response', methods=['POST'])
+def response():
+    sampleText = request.form.get("sample")
+    return render_template("index.html", sample=sampleText)
 
 if __name__ == "__main__":
     app.run(debug=True)

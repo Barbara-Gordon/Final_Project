@@ -10,7 +10,7 @@ function JD_bar(){
     var url = '/jdbar'
     console.log(url);
     // Add data
-    d3.json(url, response => {
+    d3.json(url).then(function(response){
         console.log(response);
         var politicaldata = [];
         for (var index = 0; index < response.length; index++) {
@@ -89,5 +89,5 @@ function JD_bar(){
 
 }; // end am4core.ready()
 
-console.log("start")
+// console.log("start")
 JD_bar();
