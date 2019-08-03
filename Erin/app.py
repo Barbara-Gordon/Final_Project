@@ -3,11 +3,11 @@ from flask import Flask, jsonify, render_template, request
 import json
 import pymongo
 import pandas as pd
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder, MaxAbsScaler
-from tensorflow.keras.utils import to_categorical
+# from sklearn.feature_extraction.text import CountVectorizer
+# from sklearn.naive_bayes import MultinomialNB
+# from sklearn.model_selection import train_test_split
+# from sklearn.preprocessing import LabelEncoder, MaxAbsScaler
+# from tensorflow.keras.utils import to_categorical
 
 
 app = Flask(__name__)
@@ -28,6 +28,7 @@ def rawData():
     i= 0
 
     finalData = dict()
+
 
     while i < col.count():
         finalData[i] =test[i]
