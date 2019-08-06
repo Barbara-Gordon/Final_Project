@@ -34,14 +34,14 @@ function JD_bar(){
     categoryAxis.renderer.grid.template.location = 0;
     categoryAxis.renderer.inversed = true;
     var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
-    valueAxis.extraMin = 0.1;
-    valueAxis.extraMax = 0.1;
+    valueAxis.extraMin = 0.1; //used to be 0.1 
+    valueAxis.extraMax = 0.1; //used to be 0.1
     valueAxis.renderer.minGridDistance = 40;
-    valueAxis.renderer.ticks.template.length = 5;
+    valueAxis.renderer.ticks.template.length = 10;
     valueAxis.renderer.ticks.template.disabled = false;
     valueAxis.renderer.ticks.template.strokeOpacity = 0.4;
     valueAxis.renderer.labels.template.adapter.add("text", function(text) {
-        return text == "Liberal" || text == "Conservative" ? text : text + "%";
+        return text == "Liberal" || text == "Conservative" ? text : text;
     });
     // Create series
     var liberal = chart.series.push(new am4charts.ColumnSeries());
@@ -49,26 +49,26 @@ function JD_bar(){
     liberal.dataFields.categoryY = "decade";
     liberal.clustered = false;
     var liberalLabel = liberal.bullets.push(new am4charts.LabelBullet());
-    liberalLabel.label.text = `{valueX}%`;
+    liberalLabel.label.text = `{valueX}`;
     liberalLabel.label.hideOversized = false;
     liberalLabel.label.truncate = false;
     liberalLabel.label.horizontalCenter = "right";
     liberalLabel.label.dx = -10;
     
     var Conservative = chart.series.push(new am4charts.ColumnSeries());
-    Conservative.dataFields.valueX = "Conservative";
+    Conservative.dataFields.valueX = "conservative";
     Conservative.dataFields.categoryY = "decade";
     Conservative.clustered = false;
     
     var ConservativeLabel = Conservative.bullets.push(new am4charts.LabelBullet());
-    ConservativeLabel.label.text = "{valueX}%";
+    ConservativeLabel.label.text = "{valueX}";
     ConservativeLabel.label.hideOversized = false;
     ConservativeLabel.label.truncate = false;
     ConservativeLabel.label.horizontalCenter = "left";
     ConservativeLabel.label.dx = 10;
     
     var liberalRange = valueAxis.axisRanges.create();
-    liberalRange.value = -10;
+    liberalRange.value = -1;
     liberalRange.endValue = 0;
     liberalRange.label.text = "Liberal";
     liberalRange.label.fill = chart.colors.list[0];
@@ -79,7 +79,7 @@ function JD_bar(){
     
     var ConservativeRange = valueAxis.axisRanges.create();
     ConservativeRange.value = 0;
-    ConservativeRange.endValue = 10;
+    ConservativeRange.endValue = 1;
     ConservativeRange.label.text = "Conservative";
     ConservativeRange.label.fill = chart.colors.list[1];
     ConservativeRange.label.dy = 20;
@@ -87,7 +87,10 @@ function JD_bar(){
     ConservativeRange.grid.strokeOpacity = 1;
     ConservativeRange.grid.stroke = Conservative.stroke;
 
+    
 }; // end am4core.ready()
+
 
 // console.log("start")
 JD_bar();
+

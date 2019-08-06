@@ -10,10 +10,19 @@
   <!-- Resources -->
   <script src="https://www.amcharts.com/lib/4/core.js"></script>
   <script src="https://www.amcharts.com/lib/4/charts.js"></script>
-  <script src="https://www.amcharts.com/lib/4/themes/dataviz.js"></script>
   <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
-​
+  <script src="https://www.amcharts.com/lib/4/themes/dataviz.js"></script>
+  <!-- <script src=“https://www.amcharts.com/lib/4/themes/kelly.js”></script> -->
 
+  <script src="{{ url_for('static', filename='wordcloud.js') }}"></script>
+  <script src="{{ url_for('static', filename='lib/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='lib/bootstrap/js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='lib/php-mail-form/validate.js') }}"></script>
+  <script src="{{ url_for('static', filename='lib/easing/easing.min.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
   <!-- Favicons -->
   <link href="{{ url_for('static', filename='img/favicon.png') }}" rel="icon">
@@ -61,69 +70,89 @@
     </div>
   </div>
 
-  <div id="headerwrap">
+ <div id="headerwrap">
     <div class="container">
-      <h1>Header</h1>
+      <h1>Predicting Political Speech by Decade</h1>
         
       </div>
-      <!-- /row -->
+       
     </div>
-    <!-- /container -->
+    
   </div>
-  <!-- /headerwrap -->
-
 
   <div class="container">
-      <div class="row">
-          <div class="col-lg-12">
-            <div id="jdbar"></div>
-            
-          </div>
-          
-        </div>
+    <div>
+      <h1 id="title">Wordcloud:</h1>
+      <div class="slidecontainer">
+          <input type="range" min="0" max="23" value="50" class="slider" id="myRange">
+          <label id="outRange">
+      </div>
+      <div id="wordcloud"></div>
 
+  </div>
+</div>
+
+  <div class="container">
+      <div class="row mt centered">
+    <div id="jdbar"></div>
+  </div>
+</div>
+
+<div class="container">
+    <div class="row mt centered">
+  <div id="chartdiv"></div>
+</div>
+</div>
+
+ <div class="container">
     <div class="row mt centered">
       <div class="col-lg-6 col-lg-offset-3">
-        <h1>Some Process Discussion<br/>data etc</h1>
-        <h3>!!!!</h3>
+        <h1>What we did</h1>
+  
       </div>
     </div>
     <!-- /row -->
 
     <div class="row mt centered">
       <div class="col-lg-4">
-        <img src="{{ url_for('static', filename='img/ser01.png') }}" width="180" alt="">
-        <h4>Web Scrape</h4>
-        <p>Where did we get the data from?</p>
+        <img src="{{ url_for('static', filename='img/pres.png') }}" width="180" alt="">
+        <h4>The Data</h4>
+        <p>Using Beautiful Soup, we web-scraped the Miller Center's collection of presidential speeches and the Commission on Presidential Debates collection of debate transcripts. <br> 
+          We cleaned and dumped the data into a Mongo database for exploration and testing.
+        </p>
       </div>
       <!--/col-lg-4 -->
 
       <div class="col-lg-4">
-        <img src="{{ url_for('static', filename='img/ser01.png') }}" width="180" alt="">
+        <img src="{{ url_for('static', filename='img/ml.png') }}" width="180" alt="">
         <h4>Machine Learning</h4>
-        <p>What algorhym we used?</p>
+        <p>We trained and tested our data on SkLearn's Multinomial Naeve Bayes algorithm and were able to predict the decade of a text within 50%. <br>
+        We also utilized Indico.io's text analysis API to extract political and emotional trends from the text.</p>
 
       </div>
       <!--/col-lg-4 -->
 
       <div class="col-lg-4">
-        <img src="{{ url_for('static', filename='img/ser01.png') }}" width="180" alt="">
+        <img src="{{ url_for('static', filename='img/vis.png') }}" width="180" alt="">
         <h4>Visualizations</h4>
-        <p>how we made it pretty</p>
+        <p>We created a Flask API to display a bootstrap template of our findings. Our visualizations were created with amCharts, a d3 based Javascript library. </p>
 
       </div>
       <!--/col-lg-4 -->
     </div>
     <!-- /row -->
   </div>
+
   <!-- /container -->
 
   <div class="container">
     <hr>
     <div class="row centered">
-      <div class="col-lg-6 col-lg-offset-3">
+      <div class="col-lg-12">
+        <h1>Now it's your turn</h1>
+        <h3>Enter a text and let our machine learning algorithm work it's magic!</h3>
         <form method="POST" action="/response">
-          Sample text: <textarea type="text" name="sample" required rows=15 cols = 100></textarea><br>
+          <textarea type="text" name="sample" required rows=15 cols = 100></textarea><br>
           <input type="submit" value="Submit">
           </form>
         </div>
@@ -143,34 +172,6 @@
          {% endif %}
         <h3>!!</h3>
       </div>
-    </div>
-    <!-- /row -->
-
-    <div class="row mt centered">
-      <div class="col-lg-6 col-lg-offset-3">
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-          </ol>
-
-          <!-- Wrapper for slides -->
-          <div class="carousel-inner">
-            <div class="item active">
-              <img src="{{ url_for('static', filename='img/ser01.png') }}" alt="">
-            </div>
-            <div class="item">
-              <img src="{{ url_for('static', filename='img/ser01.png') }}" alt="">
-            </div>
-            <div class="item">
-              <img src="{{ url_for('static', filename='img/ser01.png') }}" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- /col-lg-8 -->
     </div>
     <!-- /row -->
   </div>
@@ -309,16 +310,13 @@
   <!-- / copyrights -->
 
   <!-- JavaScript Libraries -->
-  <script src="{{ url_for('static', filename='lib/jquery/jquery.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='lib/bootstrap/js/bootstrap.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='lib/php-mail-form/validate.js') }}"></script>
-  <script src="{{ url_for('static', filename='lib/easing/easing.min.js') }}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
 
-  <!-- Template Main Javascript File -->
-  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
   <!--Viz JS-->
-  <script src="{{ url_for('static', filename='js/viz.js') }}"></script>
+
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+<script src="{{ url_for('static', filename='js/chart.js') }}"></script>
+<script src="{{ url_for('static', filename='js/viz.js') }}"></script>
+<script src="{{ url_for('static', filename='js/amstack.js') }}"></script>
 </html>
