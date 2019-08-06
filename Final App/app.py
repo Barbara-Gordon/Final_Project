@@ -3,12 +3,8 @@ from flask import Flask, jsonify, render_template, request
 import json
 import pymongo
 import pandas as pd
-# from sklearn.feature_extraction.text import CountVectorizer
-# from sklearn.naive_bayes import MultinomialNB
-# from sklearn.model_selection import train_test_split
-# from sklearn.preprocessing import LabelEncoder, MaxAbsScaler
-# from tensorflow.keras.utils import to_categorical
 
+from ml import make_prediction
 
 app = Flask(__name__)
 
@@ -47,8 +43,8 @@ def jdBar():
     for x in df['decade']:
         data = {}
         data['decade'] = x
-        data['liberal'] = df['liberal'][index] * 100
-        data['conservative'] = df['conservative'][index] * 100
+        data['liberal'] = df['liberal'][index] * -1
+        data['conservative'] = df['conservative'][index]
         jdBarData.append(data)
         index +=1
 
@@ -57,7 +53,8 @@ def jdBar():
 @app.route('/response', methods=['POST'])
 def response():
     sampleText = request.form.get("sample")
-    return render_template("index.html", sample=sampleText)
+    decade = make_prediction(sampleText)
+    return render_template("index.html", sample=decade)
 
 if __name__ == "__main__":
     app.run(debug=True)
