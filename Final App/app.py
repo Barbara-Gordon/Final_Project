@@ -14,25 +14,6 @@ client = pymongo.MongoClient(conn)
 @app.route('/')
 def root():
     return render_template('index.html')
-    
-@app.route('/data')
-def rawData():
-    conn = 'mongodb://timanderin.info:27017'
-    speechDB = client.speech_db
-    col = speechDB.clean
-    test = col.find()
-    i= 0
-
-    finalData = dict()
-
-
-    while i < col.count():
-        finalData[i] =test[i]
-        finalData[i]['_id']=str(test[i]['_id'])
-        finalData[i].pop('text')
-        i=i+1
-
-    return jsonify(finalData)
 
 
 @app.route('/jdbar')
@@ -55,6 +36,13 @@ def response():
     sampleText = request.form.get("sample")
     decade = make_prediction(sampleText)
     return render_template("index.html", sample=decade)
+
+
+@app.route('/data')
+def wd_cloud():
+    decade = request.args.get('decade')
+    f_json = str(decade)+".json"
+    return (f_json)
 
 if __name__ == "__main__":
     app.run(debug=True)

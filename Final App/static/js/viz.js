@@ -6,7 +6,7 @@ function JD_bar(){
     // Themes end
     
     // Create chart instance
-    var chart = am4core.create("jdbar", am4charts.XYChart);
+    var chart = am4core.create("chartdiv2", am4charts.XYChart);
     var url = '/jdbar'
     console.log(url);
     // Add data
@@ -36,8 +36,8 @@ function JD_bar(){
     var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
     valueAxis.extraMin = 0.1; //used to be 0.1 
     valueAxis.extraMax = 0.1; //used to be 0.1
-    valueAxis.renderer.minGridDistance = 40;
-    valueAxis.renderer.ticks.template.length = 10;
+    valueAxis.renderer.minGridDistance = 20;
+    valueAxis.renderer.ticks.template.length = 5;
     valueAxis.renderer.ticks.template.disabled = false;
     valueAxis.renderer.ticks.template.strokeOpacity = 0.4;
     valueAxis.renderer.labels.template.adapter.add("text", function(text) {
