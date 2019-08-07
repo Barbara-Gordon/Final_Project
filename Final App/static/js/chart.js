@@ -1,10 +1,9 @@
-
-function w_cloud() {
+var series;
+am4core.ready(function () {
     am4core.useTheme(am4themes_animated);
     // Themes end
 
     var chart = am4core.create("wordcloud", am4plugins_wordCloud.WordCloud);
-    var series;
     series = chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
 
     series.accuracy = 4;
@@ -28,7 +27,7 @@ function w_cloud() {
         series.dataItems.getIndex(Math.round(Math.random() * (series.dataItems.length - 1))).setValue("value", Math.round(Math.random() * 10));
     }, 10000)
 
-};
+});
 
 var slider = document.getElementById("myRange");
 var output = document.getElementById("outRange")
@@ -44,14 +43,11 @@ slider.oninput = function () {
 }
 
 function handleDecadeUpdate(decade) {
-    url = `./data/${decade}.json`
+    var url = `/static/data/${decade}.json`
     d3.json(url).then(function (data) {
+        console.log(data);
         am4core.ready(function () {
             series.data = data.words;
         })
     });
 }
-
-
-
-w_cloud();
