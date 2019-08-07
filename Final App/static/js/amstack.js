@@ -53,7 +53,7 @@ function helgraph(){
   series.dataFields.dateX = "Decade";
   series.name = "Fear";
   series.dataFields.valueY = "Fear";
-  series.tooltipHTML = "<img src= 'static/js/img/Fear.png' style='vertical-align:bottom; margin-right: 10px; width:28px; height:28px;'><span style='font-size:14px; color:#000000;'><b>{valueY.value}</b></span>";
+  series.tooltipHTML = "<img src= 'static/img/Fear.png' style='vertical-align:bottom; margin-right: 10px; width:28px; height:28px;'><span style='font-size:14px; color:#000000;'><b>{valueY.value}</b></span>";
   series.tooltipText = "[#000]{valueY.value}[/]";
   series.tooltip.background.fill = am4core.color("#FFF");
   series.tooltip.getStrokeFromObject = true;
@@ -67,7 +67,7 @@ function helgraph(){
   series2.name = "Anger";
   series2.dataFields.dateX = "Decade";
   series2.dataFields.valueY = "Anger";
-  series2.tooltipHTML = "<img src='static/js/img/Anger.png' style='vertical-align:bottom; margin-right: 10px; width:28px; height:28px;'><span style='font-size:14px; color:#000000;'><b>{valueY.value}</b></span>";
+  series2.tooltipHTML = "<img src='static/img/Anger.png' style='vertical-align:bottom; margin-right: 10px; width:28px; height:28px;'><span style='font-size:14px; color:#000000;'><b>{valueY.value}</b></span>";
   series2.tooltipText = "[#000]{valueY.value}[/]";
   series2.tooltip.background.fill = am4core.color("#FFF");
   series2.tooltip.getFillFromObject = false;
@@ -82,7 +82,7 @@ function helgraph(){
   series3.name = "Sadness";
   series3.dataFields.dateX = "Decade";
   series3.dataFields.valueY = "Sadness";
-  series3.tooltipHTML = "<img src='static/js/img/Sadness.png' style='vertical-align:bottom; margin-right: 10px; width:28px; height:28px;'><span style='font-size:14px; color:#000000;'><b>{valueY.value}</b></span>";
+  series3.tooltipHTML = "<img src='static/img/Sadness.png' style='vertical-align:bottom; margin-right: 10px; width:28px; height:28px;'><span style='font-size:14px; color:#000000;'><b>{valueY.value}</b></span>";
   series3.tooltipText = "[#000]{valueY.value}[/]";
   series3.tooltip.background.fill = am4core.color("#FFF");
   series3.tooltip.getFillFromObject = false;
@@ -98,7 +98,7 @@ function helgraph(){
   series4.name = "Joy";
   series4.dataFields.dateX = "Decade";
   series4.dataFields.valueY = "Joy";
-  series4.tooltipHTML = "<img src=''static/js/img/Joy.png' style='vertical-align:bottom; margin-right: 10px; width:28px; height:28px;'><span style='font-size:14px; color:#000000;'><b>{valueY.value}</b></span>";
+  series4.tooltipHTML = "<img src=''static/img/Joy.png' style='vertical-align:bottom; margin-right: 10px; width:28px; height:28px;'><span style='font-size:14px; color:#000000;'><b>{valueY.value}</b></span>";
   series4.tooltipText = "[#000]{valueY.value}[/]";
   series4.tooltip.background.fill = am4core.color("#FFF");
   series4.tooltip.getFillFromObject = false;
@@ -114,7 +114,7 @@ function helgraph(){
   series5.name = "Surprise";
   series5.dataFields.dateX = "Decade";
   series5.dataFields.valueY = "Surprise";
-  series5.tooltipHTML = "<img src='static/js/img/Surprise.png' style='vertical-align:bottom; margin-right: 10px; width:28px; height:28px;'><span style='font-size:14px; color:#000000;'><b>{valueY.value}</b></span>";
+  series5.tooltipHTML = "<img src='static/img/Surprise.png' style='vertical-align:bottom; margin-right: 10px; width:28px; height:28px;'><span style='font-size:14px; color:#000000;'><b>{valueY.value}</b></span>";
   series5.tooltipText = "[#000]{valueY.value}[/]";
   series5.tooltip.background.fill = am4core.color("#FFF");
   series5.tooltip.getFillFromObject = false;
